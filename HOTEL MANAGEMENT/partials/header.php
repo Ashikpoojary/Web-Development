@@ -13,7 +13,7 @@
                     <a class="nav-link active me-2" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link me-2" href="#">Room</a>
+                    <a class="nav-link me-2" href="rooms.php">Room</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link me-2" href="facilities.php">Facilities</a>
@@ -53,11 +53,11 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label">Email address</label>
-                        <input type="email" class="form-control" shadow-none>
+                        <input type="email" class="form-control shadow-none">
                     </div>
                     <div class="mb-4">
                         <label class="form-label">Password</label>
-                        <input type="email" class="form-control" shadow-none>
+                        <input type="password" class="form-control shadow-none">
                     </div>
                     <div class="d-flex align-items-center justify-content-between mb-2 ">
                         <button type="submit" class="btn btn-dark shadow-none ">Login</button>
