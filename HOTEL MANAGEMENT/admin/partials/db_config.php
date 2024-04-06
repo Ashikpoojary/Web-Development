@@ -20,6 +20,12 @@ function filteration($data){
     return $data;
 }
 
+function selectAll($table){
+    $con =  $GLOBALS['con'];
+    $res = mysqli_query($con,"SELECT * FROM $table");
+    return $res;
+}
+
 function select_query($sql, $values, $datatypes) {
     $con = $GLOBALS['con'];
     if ($stmt = mysqli_prepare($con, $sql)) {
@@ -65,6 +71,54 @@ function update_query($sql, $values, $datatypes){
         // Handle preparation errors gracefully
         $error = mysqli_error($con);
         die("Error preparing query -UPDATE : $sql\n" . $error);
+    }
+}
+
+function insert_query($sql, $values, $datatypes){
+    $con = $GLOBALS['con'];
+    if ($stmt = mysqli_prepare($con, $sql)) {
+        mysqli_stmt_bind_param($stmt, $datatypes, ...$values);
+        if (mysqli_stmt_execute($stmt)) {
+            $res = mysqli_stmt_affected_rows($stmt);
+            mysqli_stmt_close($stmt);
+            return $res;
+        }
+        else {
+            // Store and handle errors effectively
+            $error = mysqli_stmt_error($stmt);
+            mysqli_stmt_close($stmt);
+
+            // Improve error message with context
+            die("Error executing query -INSERT :  $sql\n" . $error);
+        }
+    } else {
+        // Handle preparation errors gracefully
+        $error = mysqli_error($con);
+        die("Error preparing query -INSERT : $sql\n" . $error);
+    }
+}
+
+function delete_query($sql, $values, $datatypes){
+    $con = $GLOBALS['con'];
+    if ($stmt = mysqli_prepare($con, $sql)) {
+        mysqli_stmt_bind_param($stmt, $datatypes, ...$values);
+        if (mysqli_stmt_execute($stmt)) {
+            $res = mysqli_stmt_affected_rows($stmt);
+            mysqli_stmt_close($stmt);
+            return $res;
+        }
+        else {
+            // Store and handle errors effectively
+            $error = mysqli_stmt_error($stmt);
+            mysqli_stmt_close($stmt);
+
+            // Improve error message with context
+            die("Error executing query -DELETE :  $sql\n" . $error);
+        }
+    } else {
+        // Handle preparation errors gracefully
+        $error = mysqli_error($con);
+        die("Error preparing query -DELETE : $sql\n" . $error);
     }
 }
 
