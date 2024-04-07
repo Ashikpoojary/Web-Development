@@ -45,7 +45,7 @@ function uploadImage($image,$folder){
     if(!in_array($img_mime,$valid_mime)){
         return 'inv_img';
     }
-    else if(($image['size']/(1024*1024))>2){
+    else if(($image['size']/(1024*1024*1024))>2){
         return 'inv_size';      // invalid size greater than 2mb
     }
     else{

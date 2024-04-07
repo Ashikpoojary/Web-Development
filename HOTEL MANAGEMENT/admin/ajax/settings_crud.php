@@ -62,7 +62,7 @@ if(isset($_POST['add_member'])){
         echo $img_r;
     }
     else{
-        $q = "INSERT INTO `team_details`(`name`, `picture`) VALUES (?,?)";
+        $q = "INSERT INTO `team_details` (`name`, `picture`) VALUES (?,?)";
         $values = [$frm_data['name'],$img_r];
         $res = insert_query($q,$values,'ss');
         echo $res;

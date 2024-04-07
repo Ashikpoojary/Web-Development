@@ -21,33 +21,46 @@
         </p>
     </div>
 
+
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 mb-5 px-4">
                 <div class="bg-white rounded shadow p-4">
                     <iframe height="320px" class="w-100 rounded mb-4 "
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d482634.9318693191!2d72.55152045152113!3d19.08195772970854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1711268239310!5m2!1sen!2sin"
+                        src="<?php echo $contact_r['iframe'] ?>"
                         loading="lazy"></iframe>
                     <h5>Address</h5>
-                    <a href="https://maps.app.goo.gl/ufuZ42AqpPjmSwNb9" target="_blank"
+                    <a href="<?php echo $contact_r['gmap'] ?>" target="_blank"
                         class="d-inline-block text-decoration-none text-dark mb-2">
-                        <i class="bi bi-geo-alt-fill"> </i>Serenity Peak, Mumbai</a>
+                        <i class="bi bi-geo-alt-fill"> </i><?php echo $contact_r['address'] ?></a>
                     <h5 class="mt-5">Call Us</h5>
                     <a href="tel: 1234567890" class="d-inline-block mb-2 text-decoration-none text-dark  ">
-                        <i class="bi bi-telephone-fill"> </i>1234567890</a> <br>
-                    <a href="tel: 1234567890" class="d-inline-block mb-2 text-decoration-none text-dark  ">
-                        <i class="bi bi-telephone-fill"> </i>1234567890</a>
+                        <i class="bi bi-telephone-fill"> </i>+<?php echo $contact_r['pn1'] ?></a> <br>
+                    <?php
+                    if($contact_r['pn2']!=''){
+                        echo<<<data
+                        <a href="tel: +$contact_r[pn2]" class="d-inline-block mb-2 text-decoration-none text-dark  ">
+                        <i class="bi bi-telephone-fill"> </i>+$contact_r[pn2]</a>
+                        data;
+                    }
+                    ?>
                     <h5 class="mt-4">Email</h5>
-                    <a href="#" class="d-inline-block text-decoration-none text-dark mb-2">
-                        <i class="bi bi-envelope-fill"> </i>serenitypeak@gmail.com</a>
+                    <a href="mailto: <?php echo $contact_r['email'] ?>" class="d-inline-block text-decoration-none text-dark mb-2">
+                        <i class="bi bi-envelope-fill"> </i><?php echo $contact_r['email'] ?></a>
                     <h5 class="mt-4">Follow Us</h5>
-                    <a href="#" class="d-inline-block text-dark fs-5 me-2">
+                    <?php
+                    if($contact_r['tw']!=''){
+                        echo<<<data
+                        <a href="$contact_r[tw]" class="d-inline-block text-dark fs-5 me-2">
                         <i class="bi bi-twitter-x me-1 "></i>
-                    </a>
-                    <a href="#" class="d-inline-block text-dark fs-5 me-2">
+                        </a>
+                        data;
+                    } 
+                    ?>
+                    <a href="<?php echo $contact_r['fb'] ?>" class="d-inline-block text-dark fs-5 me-2">
                         <i class="bi bi-facebook me-1 "></i>
                     </a>
-                    <a href="#" class="d-inline-block text-dark fs-5">
+                    <a href="<?php echo $contact_r['insta'] ?>" class="d-inline-block text-dark fs-5">
                         <i class="bi bi-instagram me-1 "></i>
                     </a>
                 </div>

@@ -185,7 +185,7 @@ adminLogin();
                                                     <span class="input-group-text"><i
                                                             class="bi bi-telephone-fill"></i></span>
                                                     <div class="form-floating">
-                                                        <input type="text" name="pn1" id="pn1_inp"
+                                                        <input type="number" name="pn1" id="pn1_inp"
                                                             class="form-control shadow-none" required>
                                                     </div>
                                                 </div>
@@ -193,7 +193,7 @@ adminLogin();
                                                     <span class="input-group-text"><i
                                                             class="bi bi-telephone-fill"></i></span>
                                                     <div class="form-floating">
-                                                        <input type="text" name="pn2" id="pn2_inp"
+                                                        <input type="number" name="pn2" id="pn2_inp"
                                                             class="form-control shadow-none">
                                                     </div>
                                                 </div>
@@ -469,7 +469,7 @@ adminLogin();
         let data = new FormData();
         data.append('name', member_name_inp.value);
         data.append('picture', member_picture_inp.files[0]);
-        data.append('add_member', '');
+        data.append('add_member','');
 
         let xhr = new XMLHttpRequest();
         xhr.open("POST", "ajax/settings_crud.php", true);

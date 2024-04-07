@@ -12,10 +12,12 @@ die("Cannot Connect to Database".mysqli_connect_error());
 
 function filteration($data){
     foreach($data as $key => $value){
-        $data[$key]=trim($value);              // removes extra spaces
-        $data[$key]=stripslashes($value);      // removes slashes
-        $data[$key]=htmlspecialchars($value);  // converts html special char into html entity
-        $data[$key]=strip_tags($value);        // removes html tags
+        $value=trim($value);              // removes extra spaces
+        $value=stripslashes($value);      // removes slashes
+        $value=strip_tags($value);        // removes html tags
+        $value=htmlspecialchars($value);  // converts html special char into html entity
+
+        $data[$key] = $value;
     }
     return $data;
 }
