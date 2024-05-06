@@ -60,6 +60,6 @@ if(isset($_POST['rem_image'])){
         echo 0;
     }
 
-;}
+}
 
 ?>
