@@ -5,23 +5,23 @@ require('../admin/partials/essentials.php');
 require("../partials/sendgrid/sendgrid-php.php");
 
 // function send_mail($uemail,$name,$token){
-//     $email = new \SendGrid\Mail\Mail(); 
-//     $email->setFrom("ashikpoojary06@gmail.com", "Serenity Peak");
-//     $email->setSubject("Account Verification Link");
-//     $email->addTo($uemail,$name);
-//     $email->addContent(
-//         "text/html", 
-//         "Click the link to confirm your email: <br>
-//         <a href='".SITE_URL."email_confirm.php?email_confirmation&email=$uemail&token=$token"."'>Click Me</a>"
-//     );
-//     $sendgrid = new \SendGrid(SENDGRID_API_KEY);
-//     try{
-//         $sendgrid->send($email);
-//         return 1;
-//     }
-//     catch(Exception $e){
-//         return 0;
-//     }
+    //     $email = new \SendGrid\Mail\Mail(); 
+    //     $email->setFrom("ashikpoojary06@gmail.com", "Serenity Peak");
+    //     $email->setSubject("Account Verification Link");
+    //     $email->addTo($uemail,$name);
+    //     $email->addContent(
+    //         "text/html", 
+    //         "Click the link to confirm your email: <br>
+    //         <a href='".SITE_URL."email_confirm.php?email_confirmation&email=$uemail&token=$token"."'>Click Me</a>"
+    //     );
+    //     $sendgrid = new \SendGrid(SENDGRID_API_KEY);
+    //     try{
+    //         $sendgrid->send($email);
+    //         return 1;
+    //     }
+    //     catch(Exception $e){
+    //         return 0;
+    //     }
 // }
 
 if(isset($_POST['register'])){
@@ -82,4 +82,28 @@ if(isset($_POST['register'])){
 
 }
 
+if(isset($_POST['login'])){
+    $data = filteration($_POST);
+    
+    $u_exist = select_query("SELECT * FROM `user_cred` WHERE `email`=? OR `phonenum`=? LIMIT 1",[$data['email_mob'],$data['email_mob']],"ss");
+
+    if(mysqli_num_rows($u_exist)==0){
+        echo 'inv_email_mob';
+    }
+    else{
+        $u_fetch = mysqli_fetch_assoc($u_exist);
+        if(!password_verify($data['pass'],$u_fetch['password'])){
+            echo 'invalid_pass';
+        }
+        else{
+            session_start();
+            $_SESSION['login'] = true;
+            $_SESSION['uId'] = $u_fetch['id'];
+            $_SESSION['uName'] = $u_fetch['name'];
+            $_SESSION['uPic'] = $u_fetch['profile'];
+            $_SESSION['uPhone'] = $u_fetch['phonenum'];
+            echo 1;
+        }
+    }
+}
 ?>
