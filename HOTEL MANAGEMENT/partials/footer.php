@@ -27,7 +27,7 @@
                         data;
                     } 
                     ?>
-            <a href="<?php echo $contact_r['fb'] ?>" class="d-inline-block text-dark text-decoration-none mb-2"><i
+            <a href="<?php echo $contact_r['fb'] ?>" class="d-inline-block text-dark text-decoration-none mb-3"><i
                     class="bi bi-facebook me-1"></i>Facebook</a> <br>
             <a href="<?php echo $contact_r['insta'] ?>" class="d-inline-block text-dark text-decoration-none"><i
                     class="bi bi-instagram me-1"></i>Instagram</a>
@@ -149,12 +149,27 @@ login_form.addEventListener('submit', (e) => {
         } else if (this.responseText == 'invalid_pass') {
             alert('error', "Incorrect Password!");
         } else {
-            window.location = window.location.pathname;
+            let fileurl = window.location.href.split('/').pop().split('?').shift();
+            if(fileurl == 'room_details.php'){
+                window.location = window.location.href;
+            }
+            else{
+                window.location = window.location.pathname;
+            }
         }
     };
     xhr.send(data);
 
 });
+
+function checkLoginToBook(status,room_id){
+    if(status){
+        window.location.href='confirm_booking.php?id='+room_id;
+    }
+    else{
+        alert('error','Please login to book room !');
+    }
+}
 
 setActive();
 </script>

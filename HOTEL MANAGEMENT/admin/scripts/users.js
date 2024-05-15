@@ -38,7 +38,7 @@ function remove_user(user_id) {
     xhr.onload = function () {
       if (this.responseText == 1) {
         alert("success", "User removed");
-        get_user();
+        get_users();
       } else {
         alert("error", "User removal failed");
       }
