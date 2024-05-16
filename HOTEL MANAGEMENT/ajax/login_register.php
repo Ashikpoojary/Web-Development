@@ -4,6 +4,8 @@ require('../admin/partials/db_config.php');
 require('../admin/partials/essentials.php');
 require("../partials/sendgrid/sendgrid-php.php");
 
+date_default_timezone_set("Asia/Kolkata");
+
 // function send_mail($uemail,$name,$token){
     //     $email = new \SendGrid\Mail\Mail(); 
     //     $email->setFrom("ashikpoojary06@gmail.com", "Serenity Peak");
